@@ -29,7 +29,10 @@ const Manager = require('./models/Manager');
 const HReviews = require('./models/HReviews');
 const GReviews = require('./models/GReviews');
 
-mongoose.connect('mongodb://127.0.0.1:27017/Tourplaner',{useNewUrlParser : true});
+var dev_db_url = 'mongodb+srv://username:password@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+mongoose.connect(mongoDB,{useNewUrlParser : true});
 
 app.get('/api/getd/City',hcontroller.api1)
 app.get('/getd/City/:id',hcontroller.api2)
